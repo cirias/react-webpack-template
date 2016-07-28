@@ -1,6 +1,6 @@
 var config = {
   entry: [
-    './app/main.js'
+    './app/main.jsx'
   ],
   output: {
       path: './build',
