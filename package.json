@@ -3,25 +3,39 @@
   "version": "0.0.0",
   "description": "",
   "dependencies": {
+    "babel-polyfill": "^6.13.0",
+    "babel-runtime": "^6.11.6",
+    "immutable": "^3.8.1",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.11.4",
-    "babel-loader": "^6.2.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.11.1",
-    "css-loader": "^0.23.1",
-    "eslint-plugin-react": "^3.16.1",
-    "file-loader": "^0.9.0",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7",
+    "react-dom": "^15.2.1",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.7.0",
+    "redux": "^3.5.2",
+    "redux-immutable": "^3.0.8",
+    "redux-saga": "^0.11.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-plugin-transform-runtime": "^6.12.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.23.1",
+    "eslint": "^3.3.1",
+    "eslint-config-airbnb": "^10.0.1",
+    "eslint-plugin-react": "^6.1.2",
+    "file-loader": "^0.9.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  },
   "scripts": {
-    "build": "webpack",
-    "server": "webpack-dev-server --colors --inline --hot --content-base build"
+    "build": "npm run vendor && webpack",
+    "server": "webpack-dev-server --colors --inline --hot --content-base build",
+    "vendor": "webpack --config ./vendor.webpack.config.js"
   },
   "author": "",
   "license": "ISC"

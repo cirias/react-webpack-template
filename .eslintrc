@@ -1,0 +1,15 @@
+{
+  "extends": "airbnb",
+  "globals": {
+    "document": true
+  },
+  "parser": "babel-eslint",
+  "rules": {
+    "no-alert": 0,
+    "new-cap": 0,
+    "max-len": 0,
+    "no-underscore-dangle": 0,
+    "react/jsx-curly-spacing": [2, "always"],
+    "no-console": ["error", { "allow": ["warn", "error"] }]
+  }
+}
