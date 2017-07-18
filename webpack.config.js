@@ -1,26 +1,48 @@
-var config = {
-  entry: [
-    './app/main.jsx'
-  ],
+var path = require('path');
+
+module.exports = {
+  entry: './src/main.jsx',
+  devtool: 'source-map',
+  devServer: {
+    contentBase: './dist'
+  },
   output: {
-      path: './build',
-      filename: 'bundle.js',
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
-    loaders: [{
-      test: /\.jsx?$/, // A regexp to test the require path. accepts either js or jsx
-      loader: 'babel', // The module to load. "babel" is short for "babel-loader"
-      query: {
-	      presets:['es2015','react']
+    rules: [
+      {
+        test: /\.jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            // TODO switch to https://babeljs.io/docs/plugins/preset-env/
+            presets: ['es2015', 'react']
+          }
+        }
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader" // translates CSS into CommonJS
+          },
+          {
+            loader: "less-loader" // compiles Less to CSS
+          }
+        ]
+      },
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader'
+        ]
       }
-    }, {
-      test: /\.css$/,
-      loader: 'style!css'
-    }, {
-      test: /\.(png|jpg)$/,
-      loader: 'url?limit=25000'
-    }],
+    ]
   }
 };
-
-module.exports = config;
